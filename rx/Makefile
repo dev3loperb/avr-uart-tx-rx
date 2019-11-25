@@ -9,10 +9,10 @@ SRCS=main.c
 all: compile objcopy
 
 compile:
-		${CC} ${CFLAGS} -o ${TARGET}.bin ${SRCS}
+	${CC} ${CFLAGS} -o ${TARGET}.bin ${SRCS}
 
 objcopy:
-		${OBJCOPY} -j .text -j .data -O ihex ${TARGET}.bin ${TARGET}.hex
+	${OBJCOPY} -j .text -j .data -O ihex ${TARGET}.bin ${TARGET}.hex
 
 flash:
-		avrdude -p ${MCU} -c usbasp -U flash:w:${TARGET}.hex:i -F -P usb
+	avrdude -p ${MCU} -c usbasp -U flash:w:${TARGET}.hex:i -F -P usb
